@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="login-box">
+        <form>
+        <div class="user-box">
+            <h3 style="color: white; display: flex; justify-content: center">Predicted Sales: {{ value }}</h3>
+        </div>
+        <a href={% url 'userinput' %} style="display: flex; justify-content: center;">
+            <span >
+            </span> 
+            Predict New Data
+        </a>
+        
+    </div>
+</form>
+</body>
+</html>
