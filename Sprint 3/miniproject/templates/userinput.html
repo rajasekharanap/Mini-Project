@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <header id="#top">
+        <nav class="main-navigation navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <a class="navbar-brand" href="{% url 'index' %}"><img src="   {% static '/image/Royal Cart-logos_white.png' %}" style="width: 100px; height:100px;" alt=""></a>
+              <div class="collapse navbar-collapse" id="navbarNav">
+              </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== TITTLE ===== -->
+    <title>Supermarket Sales Prediction</title>
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- ===== FONT AWESOME ===== -->
+    <link rel="stylesheet" href="{% static 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css' %}"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <link rel="icon" type="image/png" href="{% static 'image/icons/favicon.ico' %}"/>
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+        <!--===============================================================================================-->	
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+        <!--===============================================================================================-->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body style="background: linear-gradient(#b2c9df, #36e7e7);">
+    <main class="l-main">
+
+        <!-- ===== BACKGROUND STARS ===== -->
+        <div>
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+            <div id='stars4'></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class = "container">
+            <form action = "{% url 'userinput' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm-4">
+                            <div class="wrap-input100 validate-input" >
+                                <input  class="input100" type="text" name="item_weight" id="item_weight" placeholder="Enter Item Weight" required>
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                </span>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <select class="input100" name="item_fat_content" required="required">
+                                <option value="" selected>Enter Item Fat Content</option>
+                                <option value="0">Low Fat</option>
+                                <option value="1">Regular</option>
+                              </select>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <select class="input100" name="outlet_location_type" required="required">
+                                <option value="" selected>Outlet Location Type</option>
+                                <option value="0">Tier 1</option>
+                                <option value="1">Tier 2</option>
+                                <option value="2">Tier 3</option>
+                            </select>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <input type="text" name="item_visibility" id="item_visibility" placeholder="Enter Item Visibility"class="input100" required>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <select class="input100" name="item_type" placeholder="Enter type" required="required">
+                                <option value="" selected>Enter Item Type</option>
+                                <option value="0">Baking Goods</option>
+                                <option value="1">Breads</option>
+                                <option value="2">Breakfast</option>
+                                <option value="3">Canned</option>
+                                <option value="4">Dairy</option>
+                                <option value="5">Frozen Foods</option>
+                                <option value="6">Fruits and Vegetables</option>
+                                <option value="7">Hard Drinks</option>
+                                <option value="8">Health and Hygiene</option>
+                                <option value="9">Household</option>
+                                <option value="10">Meat</option>
+                                <option value="11">Others</option>
+                                <option value="12">Seafood</option>
+                                <option value="13">Snack Foods</option>
+                                <option value="14">Soft Drinks</option>
+                                <option value="15">Starchy Foods</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <select class="input100" name="outlet_type" required="required">
+                                <option value="" selected>Outlet Type</option>
+                                <option value="0">Grocery Store</option>
+                                <option value="1">Supermarket Type1</option>
+                                <option value="2">Supermarket Type2</option>
+                                <option value="3">Supermarket Type3</option>
+                            </select>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>   
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="wrap-input100 validate-input" >
+                            <input type="text" name="item_mrp" id="item_mrp" placeholder="Enter MRP" class="input100" required>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                            </span>
+                        </div>
+                    </div>
+                <div class="col-sm-4">
+                    <div class="wrap-input100 validate-input" >
+                        <select class="input100" name="outlet_size" required="required">
+                            <option value="" selected>Outlet Size</option>
+                            <option value="0">High</option>
+                            <option value="1">Medium</option>
+                            <option value="2">Small</option>
+                          </select>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="wrap-input100 validate-input" >
+                        <input type="text" name="outlet_establishment_year" id="outlet_establishment_year" placeholder="Enter Established Year" class="input100" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+						</span>
+					</div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+                <!-- Submit -->
+                <div class="row">
+                    <div class="col">
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">PREDICT</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="container-login100-form-btn">
+                            <button type="reset" class="login100-form-btn">RESET</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        <!-- ===== ITYPED JS =====
+        <script src="https://unpkg.com/ityped@0.0.10"></script> -->
+
+        <!--===== MAIN JS =====-->
+        <script src="{% static '/js/main.js' %}"></script>
+        <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<!-- <script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script> -->
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+        
+        <!-- <script>
+            window.ityped.init(document.querySelector('.ityped'), {
+              strings: ["Let's Get Into The Project"],
+              loop: true,
+              typeSpeed: 100,
+              backDelay: 3000,
+            });
+          </script>   -->
+</body>
+
+</html>
